@@ -1,4 +1,3 @@
-const log = console.log
 const http = require('http').createServer()
 const io = require('socket.io')(http, {  
   cors: {
@@ -8,16 +7,16 @@ const io = require('socket.io')(http, {
 })
 const port = 8080
 
-http.listen(port, () => log(`server listening on port: ${port}`))
+http.listen(port, () => console.log(`Server listening on port: ${port}`))
 
 io.on('connection', (socket: any) => {
-    log('connected')
-    socket.on('message', (evt: any) => {
-        log(evt)
+    console.log('client connected')
+    socket.on('message', (evt: string) => {
+        console.log(evt)
         socket.broadcast.emit('message', evt)
     })
 })
 
-io.on('disconnect', (evt: any) => {
-    log('some people left')
+io.on('disconnect', (evt: string) => {
+    console.log('some people left')
 })
