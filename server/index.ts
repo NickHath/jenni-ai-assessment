@@ -1,7 +1,7 @@
 const http = require('http').createServer()
 const io = require('socket.io')(http, {  
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'https://jenni-ai-assessment.vercel.app:3000',
     methods: ['GET', 'POST']
   }
 })
